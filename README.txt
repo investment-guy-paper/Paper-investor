@@ -26,7 +26,7 @@ GITHUB PAGES (permanent, free)
 1. github.com -> New repository -> name it paper-investor -> Public -> Create
 2. "uploading an existing file" -> drag all 7 files -> Commit changes
 3. Settings -> Pages -> Source: "Deploy from a branch" -> main / (root) -> Save
-4. Wait ~1 minute, then open https://investment-guy-paper.github.io/Paper-investor/
+4. Wait ~1 minute, then open https://YOURNAME.github.io/paper-investor/
 5. On iPhone, open that URL in Safari -> Share -> Add to Home Screen
 
 IMPORTANT
