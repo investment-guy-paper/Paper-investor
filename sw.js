@@ -1,13 +1,10 @@
-/* Cache-first service worker. Everything is local, so offline is the normal case. */
-const CACHE = "paper-investor-v7";
+/* Network-first for the page itself so a new upload always wins.
+   Cache-first for icons, which never change. Offline still works:
+   if the network fails we fall back to the cached copy. */
+const CACHE = "paper-investor-v8";
 const ASSETS = [
-  "./",
-  "./index.html",
-  "./manifest.webmanifest",
-  "./icon-180.png",
-  "./icon-192.png",
-  "./icon-512.png",
-  "./icon-maskable-512.png",
+  "./", "./index.html", "./manifest.webmanifest",
+  "./icon-180.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png",
 ];
 
 self.addEventListener("install", (e) => {
@@ -24,16 +21,30 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   if (e.request.method !== "GET") return;
-  e.respondWith(
-    caches.match(e.request).then((hit) => {
-      if (hit) return hit;
-      return fetch(e.request)
+  const url = new URL(e.request.url);
+  const isPage = e.request.mode === "navigate"
+    || url.pathname.endsWith("/")
+    || url.pathname.endsWith("index.html");
+
+  if (isPage) {
+    // always try the network first; fall back to cache only when offline
+    e.respondWith(
+      fetch(e.request)
         .then((res) => {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
+          caches.open(CACHE).then((c) => c.put("./index.html", copy)).catch(() => {});
           return res;
         })
-        .catch(() => caches.match("./index.html"));
-    })
+        .catch(() => caches.match("./index.html").then((hit) => hit || caches.match("./")))
+    );
+    return;
+  }
+
+  e.respondWith(
+    caches.match(e.request).then((hit) => hit || fetch(e.request).then((res) => {
+      const copy = res.clone();
+      caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
+      return res;
+    }))
   );
 });
