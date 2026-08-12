@@ -1,5 +1,5 @@
 /* Cache-first service worker. Everything is local, so offline is the normal case. */
-const CACHE = "paper-investor-v2";
+const CACHE = "paper-investor-v5";
 const ASSETS = [
   "./",
   "./index.html",
