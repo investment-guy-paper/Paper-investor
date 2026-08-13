@@ -1,4 +1,4 @@
-PAPER INVESTOR — build 8
+PAPER INVESTOR — version 0.1
 ========================
 
 Upload ALL 7 files to the ROOT of your repo (not inside a folder):
@@ -7,8 +7,8 @@ Upload ALL 7 files to the ROOT of your repo (not inside a folder):
 
 CHECKING THE UPDATE WORKED
 --------------------------
-Open the app and look at the top line: it should read "BUILD 8".
-Also in Progress tab -> VERSION -> "Build 8".
+Open the app and look at the top line: it should read "v0.1".
+Also in Progress tab -> VERSION -> "Version 0.1".
 If it still shows an older number, the phone is serving a cached copy.
 
 IF THE SITE ISN'T UPDATING
