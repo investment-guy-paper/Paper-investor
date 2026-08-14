@@ -1,7 +1,7 @@
 /* Network-first for the page itself so a new upload always wins.
    Cache-first for icons, which never change. Offline still works:
    if the network fails we fall back to the cached copy. */
-const CACHE = "paper-investor-v0-10";
+const CACHE = "paper-investor-v0-11";
 const ASSETS = [
   "./", "./index.html", "./manifest.webmanifest",
   "./icon-180.png", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png",

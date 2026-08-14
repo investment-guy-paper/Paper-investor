@@ -1,4 +1,4 @@
-PAPER INVESTOR — version 0.1
+PAPER INVESTOR — version 0.11
 ========================
 
 Upload ALL 7 files to the ROOT of your repo (not inside a folder):
@@ -7,7 +7,7 @@ Upload ALL 7 files to the ROOT of your repo (not inside a folder):
 
 CHECKING THE UPDATE WORKED
 --------------------------
-Open the app and look at the top line: it should read "v0.1".
+Open the app and look at the top line: it should read "v0.11".
 Also in Progress tab -> VERSION -> "Version 0.1".
 If it still shows an older number, the phone is serving a cached copy.
 
